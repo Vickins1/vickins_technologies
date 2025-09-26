@@ -1,0 +1,20 @@
+import { motion } from "framer-motion";
+
+export default function HeroSection() {
+  return (
+    <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      id="home"
+      className="text-center mb-16 relative overflow-hidden bg-gradient-to-br from-[var(--navbar-bg)] to-[var(--button-bg)] text-[var(--navbar-text)] p-16 rounded-xl shadow-2xl"
+    >
+      <div className="absolute inset-0 opacity-20 bg-repeat"></div>
+      <h2 className="text-5xl font-bold mb-6 relative z-10">Innovative IT Solutions for Your Business</h2>
+      <p className="text-xl mb-8 relative z-10">Driving success through cutting-edge technology and expert consulting.</p>
+      <a href="#services" className="bg-[var(--card-bg)] text-[var(--button-bg)] px-8 py-3 rounded-full hover:bg-opacity-90 transition duration-300 relative z-10 font-semibold shadow-md">
+        Explore Services
+      </a>
+    </motion.section>
+  );
+}

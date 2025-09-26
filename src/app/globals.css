@@ -1,26 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #ffffff; /* Pure white background */
+  --foreground: #111827; /* Dark gray text (gray-900) */
+  --navbar-bg: #ffffff; /* Dark green for navbar (green-700) */
+  --navbar-text: #002f5e; /* Light text (gray-50) */
+  --button-bg: #3b82f6; /* Blue for buttons (blue-500) */
+  --card-bg: #f9fafb; /* Slightly off-white for cards (gray-50) */
+  --font-sans: 'Roboto', Arial, Helvetica, sans-serif;
+  --font-mono: 'Roboto Mono', monospace;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root[data-theme="dark"] {
+  --background: #111827; /* Dark background (gray-900) */
+  --foreground: #f9fafb; /* Light text (gray-50) */
+  --navbar-bg: #1f2937; /* Darker gray for navbar (gray-800) */
+  --navbar-text: #f9fafb; /* Light text */
+  --button-bg: #1d4ed8; /* Darker blue (blue-700) */
+  --card-bg: #1f2937; /* Dark cards (gray-800) */
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  :root:not([data-theme="light"]) {
+    --background: #111827;
+    --foreground: #f9fafb;
+    --navbar-bg: #1f2937;
+    --navbar-text: #f9fafb;
+    --button-bg: #1d4ed8;
+    --card-bg: #1f2937;
   }
 }
 
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  margin: 0;
 }
