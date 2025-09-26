@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react"; // Add useEffect
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar";
 import Footer from "../components/Footer";
@@ -16,6 +16,12 @@ import ContactSection from "../components/ContactSection";
 export default function Home() {
   const [isDarkMode, setIsDarkMode] = useState(false);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // Set light theme as default on initial render
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", "light");
+    setIsDarkMode(false);
+  }, []); // Empty dependency array to run once on mount
 
   const toggleTheme = () => {
     const newTheme = isDarkMode ? "light" : "dark";
