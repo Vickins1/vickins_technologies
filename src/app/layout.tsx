@@ -1,6 +1,8 @@
+
 import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import ThemePreloaderProvider from "../components/ThemePreloaderProvider"; // Import Client Component
 
 // Configure the Roboto font
 const roboto = Roboto({
@@ -95,12 +97,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${roboto.variable} w-full h-full scroll-smooth`}>
-      <head>
-        {/* Preload critical assets for performance */}
-        <link rel="preload" href="/logo1.png" as="image" />
-      </head>
       <body className="antialiased min-h-screen w-full overflow-x-hidden font-roboto bg-[var(--background)] text-[var(--foreground)]">
-        {children}
+        <ThemePreloaderProvider>
+          {children}
+        </ThemePreloaderProvider>
       </body>
     </html>
   );
