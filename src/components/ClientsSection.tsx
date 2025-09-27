@@ -15,9 +15,19 @@ export default function ClientsSection() {
   const extendedClients = [...clients, ...clients];
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-gray-50">
+    <section className="py-12 md:py-16 lg:py-20 bg-[var(--background)]">
+          <motion.section
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      id="clients"
+      className="py-1 rounded-2xl shadow-xl relative overflow-hidden mx-4"
+      style={{ background: 'linear-gradient(to bottom right, var(--background), var(--card-bg))' }}
+    ></motion.section>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8">Our Clients</h2>
+        <h2 className="text-3xl font-bold text-center mb-8" style={{ color: 'var(--foreground)' }}>
+          Our Clients
+        </h2>
         <div className="overflow-hidden">
           <motion.div
             className="flex"

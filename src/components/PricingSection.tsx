@@ -31,7 +31,6 @@ const pricingPlans: PricingPlan[] = [
       "Sales Analytics",
       "24/7 Support",
     ],
-    popular: true,
   },
   {
     name: "POS Systems",
@@ -174,6 +173,77 @@ const pricingPlans: PricingPlan[] = [
       "24/7 Support",
     ],
   },
+  {
+    name: "IT Consulting",
+    description: "Expert tech guidance",
+    price: "KES 10,000+",
+    features: [
+      "IT Strategy",
+      "System Audits",
+      "Security Assessments",
+      "Cloud Solutions",
+      "Infrastructure Planning",
+      "Cost Optimization",
+      "Compliance Guidance",
+      "Vendor Selection",
+      "24/7 Support",
+    ],
+    idealFor: "SMEs, Enterprises",
+  },
+  {
+    name: "Digital Marketing",
+    description: "Boost your online presence",
+    price: "KES 20,000+",
+    features: [
+      "SEO Optimization",
+      "Social Media Management",
+      "Content Creation",
+      "Email Marketing",
+      "PPC Campaigns",
+      "Analytics & Reporting",
+      "Brand Strategy",
+      "Audience Targeting",
+      "Conversion Optimization",
+      "24/7 Support",
+    ],
+    idealFor: "All Business Sizes",
+  },
+  {
+    name: "IT Support",
+    description: "Reliable tech assistance",
+    price: "KES 15,000+",
+    features: [
+      "24/7 Helpdesk",
+      "Remote Support",
+      "On-site Assistance",
+      "System Monitoring",
+      "Software Updates",
+      "Security Management",
+      "Backup Solutions",
+      "Network Support",
+      "Hardware Troubleshooting",
+      "24/7 Support",
+    ],
+    idealFor: " voituresSMEs, Enterprises",
+  },
+  {
+    name: "Cybersecurity",
+    description: "Protect your digital assets",
+    price: "KES 30,000+",
+    features: [
+      "Vulnerability Assessments",
+      "Penetration Testing",
+      "Security Audits",
+      "Incident Response",
+      "Firewall Management",
+      "Data Encryption",
+      "Employee Training",
+      "Compliance Consulting",
+      "24/7 Monitoring",
+      "24/7 Support",
+    ],
+    idealFor: "All Business Sizes",
+  },
 ];
 
 export default function Pricing() {
@@ -191,13 +261,12 @@ export default function Pricing() {
         if (firstSlide) {
           setSlideWidth(firstSlide.getBoundingClientRect().width);
         }
-        // Adjust current slide to stay within the first set on resize
         setCurrentSlide((prev) => prev % pricingPlans.length);
       }
     };
 
     window.addEventListener('resize', handleResize);
-    handleResize(); // Initial calculation
+    handleResize();
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -206,11 +275,10 @@ export default function Pricing() {
     setCurrentSlide((prev) => {
       let next = prev - 1;
       if (next < 0) {
-        next = extendedPricingPlans.length + next; // Wrap to end
-        // Schedule reset after transition
+        next = extendedPricingPlans.length + next;
         setTimeout(() => {
           setCurrentSlide(next % pricingPlans.length);
-        }, 800); // Match transition duration
+        }, 800);
       }
       return next;
     });
@@ -221,15 +289,13 @@ export default function Pricing() {
       let next = prev + 1;
       if (next >= extendedPricingPlans.length) {
         next = next % extendedPricingPlans.length;
-        // Schedule reset after transition
         setTimeout(() => {
           setCurrentSlide(next);
-        }, 800); // Match transition duration
+        }, 800);
       } else if (next >= pricingPlans.length) {
-        // Schedule reset to start of first set after transition
         setTimeout(() => {
           setCurrentSlide(next - pricingPlans.length);
-        }, 800); // Match transition duration
+        }, 800);
       }
       return next;
     });
@@ -241,86 +307,94 @@ export default function Pricing() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
       id="pricing"
-      className="py-12 bg-[var(--card-bg)] rounded-lg shadow-lg relative overflow-hidden"
+      className="py-1 rounded-2xl shadow-xl relative overflow-hidden mx-4"
+      style={{ background: 'linear-gradient(to bottom right, var(--background), var(--card-bg))' }}
     >
-      <div className="absolute inset-0 bg-gradient-to-br from-[var(--button-bg)]/10 to-transparent opacity-30" />
-      <div className="container mx-auto px-4 relative z-10">
-        <h2 className="text-3xl font-bold text-center mb-4">Our Pricing Plans</h2>
-        <p className="text-center mb-8 text-base">Professional Solutions Tailored to Your Business Needs</p>
+      <div className="container mx-auto px-6 relative z-10">
+        <h2 className="text-4xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
+          Our Pricing Plans
+        </h2>
+        <p className="text-center mb-12 text-lg" style={{ color: 'var(--foreground)' }}>
+          Professional Solutions Tailored to Your Business Needs
+        </p>
         <div className="relative overflow-hidden" ref={slideshowRef}>
           <motion.div
             className="flex"
             animate={{ x: -currentSlide * slideWidth }}
-            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }} // Smooth cubic-bezier easing
+            transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
           >
             {extendedPricingPlans.map((plan, index) => (
               <motion.div
                 key={`${plan.name}-${index}`}
-                className="flex-shrink-0 w-11/12 sm:w-5/12 md:w-4/12 lg:w-3/12 px-2"
-                initial={{ opacity: 0, scale: 0.9 }}
+                className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 mb-6"
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.4 }}
-                whileHover={{ scale: 1.03, transition: { duration: 0.2 } }}
+                transition={{ duration: 0.5 }}
+                whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
               >
                 <div
-                  className={`relative p-4 bg-[var(--navbar-bg)]/80 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 ${
-                    plan.popular ? "border-2 border-[var(--button-bg)]" : ""
+                  className={`relative p-6 rounded-xl shadow-lg h-[360px] flex flex-col justify-between transition-all duration-300 ${
+                    plan.popular ? "border-2 border-[var(--button-bg)]" : "border border-[var(--card-bg)]"
                   }`}
+                  style={{ backgroundColor: 'var(--card-bg)' }}
                 >
                   {plan.popular && (
-                    <span className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[var(--button-bg)] text-[var(--navbar-text)] text-xs font-semibold px-3 py-1 rounded-full">
-                      Popular
+                    <span
+                      className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md"
+                      style={{ backgroundColor: 'var(--button-bg)' }}
+                    >
+                      Most Popular
                     </span>
                   )}
-                  <h3 className="text-lg font-semibold mb-1 text-center">{plan.name}</h3>
-                  <p className="text-center text-xs mb-2 opacity-80">{plan.description}</p>
-                  <p className="text-xl font-bold text-center mb-3 text-[var(--button-bg)]">
-                    From {plan.price}
-                  </p>
-                  <ul className="space-y-2 mb-4 max-h-48 overflow-y-auto">
-                    {plan.features.map((feature) => (
-                      <li key={feature} className="flex items-center text-xs">
-                        <CheckCircleIcon className="h-4 w-4 text-[var(--button-bg)] mr-1.5" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  {plan.idealFor && (
-                    <p className="text-center text-xs mb-3">
-                      <span className="font-semibold">Ideal for:</span> {plan.idealFor}
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-center" style={{ color: 'var(--foreground)' }}>
+                      {plan.name}
+                    </h3>
+                    <p className="text-center text-sm mb-4" style={{ color: 'var(--foreground)' }}>
+                      {plan.description}
                     </p>
-                  )}
-                  <motion.a
-                    href="#contact"
-                    className="block text-center bg-[var(--button-bg)] text-[var(--navbar-text)] px-4 py-2 rounded-full hover:opacity-90 transition duration-300 shadow-sm text-sm font-semibold"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400, damping: 15 }}
-                  >
-                    Get Started
-                  </motion.a>
+                    <p className="text-2xl font-bold text-center mb-4" style={{ color: 'var(--button-bg)' }}>
+                      From {plan.price}
+                    </p>
+                    <ul className="space-y-2 mb-4 max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--button-bg)] scrollbar-track-[var(--card-bg)]">
+                      {plan.features.map((feature) => (
+                        <li key={feature} className="flex items-center text-sm" style={{ color: 'var(--foreground)' }}>
+                          <CheckCircleIcon className="h-5 w-5 mr-2 flex-shrink-0" style={{ color: 'var(--button-bg)' }} />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    {plan.idealFor && (
+                      <p className="text-center text-sm mb-4" style={{ color: 'var(--foreground)' }}>
+                        <span className="font-semibold">Ideal for:</span> {plan.idealFor}
+                      </p>
+                    )}
+                  </div>
                 </div>
               </motion.div>
             ))}
           </motion.div>
-          {/* Navigation buttons */}
           <motion.button
             onClick={goToPrevSlide}
-            className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-[var(--button-bg)] text-[var(--navbar-text)] p-2 rounded-full shadow-md hover:opacity-90 transition duration-300"
+            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full shadow-lg transition duration-300"
+            style={{ backgroundColor: 'var(--button-bg)' }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <ChevronLeftIcon className="h-5 w-5" />
+            <ChevronLeftIcon className="h-6 w-6" />
           </motion.button>
           <motion.button
             onClick={goToNextSlide}
-            className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-[var(--button-bg)] text-[var(--navbar-text)] p-2 rounded-full shadow-md hover:opacity-90 transition duration-300"
+            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full shadow-lg transition duration-300"
+            style={{ backgroundColor: 'var(--button-bg)' }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <ChevronRightIcon className="h-5 w-5" />
+            <ChevronRightIcon className="h-6 w-6" />
           </motion.button>
         </div>
       </div>

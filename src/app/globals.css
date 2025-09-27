@@ -22,19 +22,6 @@
   --card-bg: #1f2937; /* Dark cards (gray-800) */
 }
 
-/* Remove or comment out prefers-color-scheme to prevent automatic dark mode
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --background: #111827;
-    --foreground: #f9fafb;
-    --navbar-bg: #1f2937;
-    --navbar-text: #f9fafb;
-    --button-bg: #1d4ed8;
-    --card-bg: #1f2937;
-  }
-}
-*/
-
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

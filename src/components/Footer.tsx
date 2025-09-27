@@ -48,9 +48,9 @@ const Footer: FC = () => {
               {[
                 { Icon: FaXTwitter, href: "https://x.com/vickins_tech" },
                 { Icon: FaWhatsapp, href: "https://wa.me/254794501005" },
-                { Icon: FaFacebook, href: "https://facebook.com/vickins-technologies" },
-                { Icon: FaLinkedin, href: "https://linkedin.com/company/vickins-technologies" },
-                { Icon: FaInstagram, href: "https://instagram.com/vickins_tech" },
+                { Icon: FaFacebook, href: "https://www.facebook.com/profile.php?id=61569016955138" },
+                { Icon: FaLinkedin, href: "https://www.linkedin.com/in/kelvinthuo" },
+                { Icon: FaInstagram, href: "https://instagram.com/vickins.technologies" },
                 { Icon: FaGithub, href: "https://github.com/vickins1" },
               ].map(({ Icon, href }, index) => (
                 <motion.a

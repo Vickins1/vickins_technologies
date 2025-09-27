@@ -17,7 +17,9 @@ export default function ServicesSection() {
     { title: "Applications Development", description: "Our expert Apps development team builds user-friendly, responsive, and feature-rich Applications tailored to your business needs, ensuring optimal user experiences.", icon: DevicePhoneMobileIcon },
     { title: "Business Reform", description: "We assist in transforming your business strategies, optimizing workflows, and adopting best practices to enhance performance and drive long-term success.", icon: ArrowPathIcon },
     { title: "Graphic Design", description: "Our creative team delivers professional graphic design services, creating visually striking logos, branding, marketing materials, and digital assets that captivate your audience.", icon: PencilSquareIcon },
-    { title: "LeaseCaptain Platform", description: "Vickins Technologies is the mastermind behind LeaseCaptain.com, a cutting-edge digital platform revolutionizing the equipment leasing industry. We can do the same for your big idea — turning vision into reality!", icon: RocketLaunchIcon },
+    { title: "Digital Marketing", description: "We offer comprehensive digital marketing services, including SEO, social media management, and online advertising, to boost your online presence and drive targeted traffic to your business.", icon: RocketLaunchIcon },
+    { title: "IT Support", description: "Our reliable IT support services ensure your technology systems run smoothly, providing timely assistance and solutions to minimize downtime and enhance productivity.", icon: ComputerDesktopIcon },
+    { title: "Cybersecurity", description: "We provide robust cybersecurity solutions to protect your business from digital threats, ensuring the safety of your data and maintaining the integrity of your IT infrastructure.", icon: CloudIcon },
   ];
 
   return (
@@ -42,14 +44,9 @@ export default function ServicesSection() {
             <service.icon className="h-10 w-10 text-[var(--button-bg)] mb-4 mx-auto" />
             <h3 className="text-xl font-semibold mb-2 text-center">{service.title}</h3>
             <p className="text-center mb-4">{service.description}</p>
-            <a href="#" className="text-[var(--button-bg)] hover:underline block text-center font-semibold">Learn More</a>
+            <a href="#contact" className="text-[var(--button-bg)] hover:underline block text-center font-semibold">Learn More</a>
           </motion.div>
         ))}
-      </div>
-      <div className="text-center mt-8">
-        <a href="#" className="bg-[var(--button-bg)] text-[var(--navbar-text)] px-6 py-3 rounded-full hover:opacity-90 transition duration-300 shadow-md">
-          View All Services
-        </a>
       </div>
     </motion.section>
   );
