@@ -12,7 +12,7 @@ interface NavbarProps {
 export default function Navbar({ isDarkMode, toggleTheme, toggleSidebar }: NavbarProps) {
   return (
     <nav className="bg-[var(--navbar-bg)] text-[var(--navbar-text)] py-3 sticky top-0 z-50 shadow-[0_4px_6px_-1px_rgba(0,0,0,0.1)] backdrop-blur-sm bg-opacity-90">
-      <div className="container mx-auto px-6 flex justify-between items-center">
+      <div className="container mx-auto px-4 sm:px-6 flex justify-between items-center">
         <Link href="/">
           <motion.div
             whileHover={{ scale: 1.05, rotate: 2 }}
@@ -22,16 +22,16 @@ export default function Navbar({ isDarkMode, toggleTheme, toggleSidebar }: Navba
             <Image
               src={isDarkMode ? '/logo1.png' : '/logo2.png'}
               alt="Vickins Technologies Logo"
-              width={100}
-              height={40}
-              className="transition-transform duration-300"
+              width={80}
+              height={32}
+              className="sm:w-[100px] sm:h-[40px] transition-transform duration-300"
             />
           </motion.div>
         </Link>
-        <div className="flex items-center space-x-8">
+        <div className="flex items-center space-x-4 sm:space-x-8">
           <motion.button
             onClick={toggleTheme}
-            className="p-2 hover:bg-[var(--card-bg)] hover:bg-opacity-30 rounded-full transition duration-300"
+            className="p-1 sm:p-2 hover:bg-[var(--card-bg)] hover:bg-opacity-30 rounded-full transition duration-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 400, damping: 15 }}
@@ -45,7 +45,7 @@ export default function Navbar({ isDarkMode, toggleTheme, toggleSidebar }: Navba
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <SunIcon className="h-6 w-6" />
+                  <SunIcon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </motion.div>
               ) : (
                 <motion.div
@@ -55,23 +55,23 @@ export default function Navbar({ isDarkMode, toggleTheme, toggleSidebar }: Navba
                   exit={{ rotate: 90, opacity: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <MoonIcon className="h-6 w-6" />
+                  <MoonIcon className="h-5 w-5 sm:h-6 sm:w-6" />
                 </motion.div>
               )}
             </AnimatePresence>
           </motion.button>
           <motion.button
             onClick={toggleSidebar}
-            className="md:hidden p-2 hover:bg-[var(--card-bg)] hover:bg-opacity-30 rounded-full transition duration-300"
+            className="md:hidden p-1 sm:p-2 hover:bg-[var(--card-bg)] hover:bg-opacity-30 rounded-full transition duration-300"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 400, damping: 15 }}
           >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
             </svg>
           </motion.button>
-          <ul className="hidden md:flex space-x-8 items-center">
+          <ul className="hidden md:flex space-x-4 sm:space-x-8 items-center">
             {['Home', 'Process', 'About', 'Services', 'Pricing', 'Clients', 'Contact'].map((item) => (
               <motion.li
                 key={item}
@@ -80,7 +80,7 @@ export default function Navbar({ isDarkMode, toggleTheme, toggleSidebar }: Navba
               >
                 <Link
                   href={`#${item.toLowerCase()}`}
-                  className="relative text-sm font-semibold tracking-wide text-[var(--navbar-text)] hover:text-[var(--button-bg)] transition duration-300 group"
+                  className="relative text-xs sm:text-sm font-semibold tracking-wide text-[var(--navbar-text)] hover:text-[var(--button-bg)] transition duration-300 group"
                 >
                   {item}
                   <span className="absolute left-0 bottom-[-4px] w-0 h-[2px] bg-[var(--button-bg)] transition-all duration-300 group-hover:w-full" />

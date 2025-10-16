@@ -15,17 +15,17 @@ export default function ClientsSection() {
   const extendedClients = [...clients, ...clients];
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-[var(--background)]">
-          <motion.section
-      initial={{ opacity: 0, y: 50 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-      id="clients"
-      className="py-1 rounded-2xl shadow-xl relative overflow-hidden mx-4"
-      style={{ background: 'linear-gradient(to bottom right, var(--background), var(--card-bg))' }}
-    ></motion.section>
+    <section className="py-8 sm:py-12 md:py-16 lg:py-20 bg-[var(--background)]">
+      <motion.section
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        id="clients"
+        className="py-1 rounded-2xl shadow-xl relative overflow-hidden mx-4"
+        style={{ background: 'linear-gradient(to bottom right, var(--background), var(--card-bg))' }}
+      ></motion.section>
       <div className="container mx-auto px-4">
-        <h2 className="text-3xl font-bold text-center mb-8" style={{ color: 'var(--foreground)' }}>
+        <h2 className="text-2xl sm:text-3xl font-bold text-center mb-6 sm:mb-8" style={{ color: 'var(--foreground)' }}>
           Our Clients
         </h2>
         <div className="overflow-hidden">
@@ -42,14 +42,14 @@ export default function ClientsSection() {
             {extendedClients.map((client, index) => (
               <div
                 key={`${client.alt}-${index}`}
-                className="flex-shrink-0 px-2 sm:px-3 md:px-4"
+                className="flex-shrink-0 px-1 sm:px-2 md:px-3 lg:px-4"
                 style={{ width: `${100 / clients.length}%` }}
               >
                 <a
                   href={client.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="block relative w-full h-16 sm:h-20 md:h-24 lg:h-28"
+                  className="block relative w-full h-12 sm:h-16 md:h-20 lg:h-24"
                 >
                   <Image
                     src={client.src}

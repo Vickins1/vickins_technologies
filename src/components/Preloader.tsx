@@ -45,7 +45,7 @@ export default function Preloader({ isDarkMode }: PreloaderProps) {
         {particles.map((style, i) => (
           <div
             key={i}
-            className="absolute w-2 h-2 rounded-full opacity-20 animate-float"
+            className="absolute w-1 sm:w-2 h-1 sm:h-2 rounded-full opacity-20 animate-float"
             style={{
               ...style,
               backgroundColor: isDarkMode ? "rgba(59, 130, 246, 0.3)" : "rgba(107, 114, 128, 0.3)",
@@ -55,26 +55,26 @@ export default function Preloader({ isDarkMode }: PreloaderProps) {
       </div>
 
       {/* Main Content */}
-      <div className="relative flex flex-col items-center gap-6 z-10">
+      <div className="relative flex flex-col items-center gap-4 sm:gap-6 z-10">
         <div className="group">
           <Image
             src={isDarkMode ? "/logo1.png" : "/logo2.png"}
             alt="Vickins Technologies Logo"
-            width={120}
-            height={120}
-            className="animate-float-logo group-hover:animate-float-logo-hover transition-all duration-300 cursor-default"
+            width={100}
+            height={100}
+            className="sm:w-[120px] sm:h-[120px] animate-float-logo group-hover:animate-float-logo-hover transition-all duration-300 cursor-default"
             priority
           />
         </div>
         <div className="flex items-center space-x-1">
-          <span className="text-xl font-medium" style={{ color: "var(--color-foreground)" }}>
+          <span className="text-lg sm:text-xl font-medium" style={{ color: "var(--color-foreground)" }}>
             Vickins Technologies
           </span>
           <div className="flex space-x-0.5 ml-1">
             {[...Array(3)].map((_, i) => (
               <div
                 key={i}
-                className="w-2 h-2 rounded-full bg-[var(--button-bg)] animate-dot-scale"
+                className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-[var(--button-bg)] animate-dot-scale"
                 style={{ animationDelay: `${i * 0.3}s` }}
               />
             ))}

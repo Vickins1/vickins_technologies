@@ -1,5 +1,6 @@
+// src/app/api/contact/route.ts
 import { NextRequest, NextResponse } from 'next/server';
-import connectToDatabase  from '../../../lib/mongodb';
+import connectToDatabase from '../../../lib/mongodb';
 import transporter from '../../../lib/nodemailer';
 
 // Define the contact interface
@@ -13,11 +14,12 @@ export interface IContact {
 }
 
 export async function POST(request: NextRequest) {
-  try {
-    // Connect to MongoDB
-    const db = await connectToDatabase();
-    const collection = db.collection('contacts');
+  // Skip MongoDB operations during build time
+  if (process.env.NODE_ENV === 'production' && !request.method) {
+    return NextResponse.json({ message: 'Build-time placeholder' }, { status: 200 });
+  }
 
+  try {
     // Parse and validate request body
     const body: IContact = await request.json();
 
@@ -58,6 +60,10 @@ export async function POST(request: NextRequest) {
       services: contactData.services,
     });
 
+    // Connect to MongoDB
+    const db = await connectToDatabase();
+    const collection = db.collection('contacts');
+
     // Insert into MongoDB
     const result = await collection.insertOne(contactData);
 
@@ -85,7 +91,16 @@ export async function POST(request: NextRequest) {
       `,
     };
 
-    console.log('Sending email notification to:', process.env.EMAIL_USER);
+    // Validate email configuration
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_RECEIVER) {
+      console.error('Email configuration missing:', {
+        emailUser: !!process.env.EMAIL_USER,
+        emailReceiver: !!process.env.EMAIL_RECEIVER,
+      });
+      return NextResponse.json({ message: 'Email configuration error' }, { status: 500 });
+    }
+
+    console.log('Sending email notification to:', process.env.EMAIL_RECEIVER);
     await transporter.sendMail(mailOptions);
     console.log('Email sent successfully');
 

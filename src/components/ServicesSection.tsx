@@ -28,23 +28,23 @@ export default function ServicesSection() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, delay: 0.6, ease: "easeOut" }}
       id="services"
-      className="py-16"
+      className="py-8 sm:py-16"
     >
-      <h2 className="text-4xl font-bold text-center mb-12">Looking for the Perfect IT Solution?</h2>
-      <p className="text-center mb-8 text-lg">We Provide Tailored IT Solutions to Keep Your Business Ahead</p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 sm:mb-12">Looking for the Perfect IT Solution?</h2>
+      <p className="text-center mb-6 sm:mb-8 text-base sm:text-lg">We Provide Tailored IT Solutions to Keep Your Business Ahead</p>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
         {services.map((service, index) => (
           <motion.div
             key={service.title}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
-            className="bg-[var(--card-bg)] p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 hover:transform hover:-translate-y-2"
+            className="bg-[var(--card-bg)] p-4 sm:p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 hover:transform hover:-translate-y-2"
           >
-            <service.icon className="h-10 w-10 text-[var(--button-bg)] mb-4 mx-auto" />
-            <h3 className="text-xl font-semibold mb-2 text-center">{service.title}</h3>
-            <p className="text-center mb-4">{service.description}</p>
-            <a href="#contact" className="text-[var(--button-bg)] hover:underline block text-center font-semibold">Learn More</a>
+            <service.icon className="h-8 w-8 sm:h-10 sm:w-10 text-[var(--button-bg)] mb-3 sm:mb-4 mx-auto" />
+            <h3 className="text-lg sm:text-xl font-semibold mb-2 text-center">{service.title}</h3>
+            <p className="text-sm sm:text-base text-center mb-3 sm:mb-4">{service.description}</p>
+            <a href="#contact" className="text-[var(--button-bg)] hover:underline block text-center font-semibold text-sm sm:text-base">Learn More</a>
           </motion.div>
         ))}
       </div>

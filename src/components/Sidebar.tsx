@@ -17,36 +17,36 @@ export default function Sidebar({ isOpen, isDarkMode, toggleSidebar }: SidebarPr
           animate={{ x: 0, opacity: 1 }}
           exit={{ x: '-100%', opacity: 0 }}
           transition={{ type: 'spring', stiffness: 400, damping: 30 }}
-          className="fixed top-0 left-0 h-full w-72 bg-[var(--navbar-bg)] text-[var(--navbar-text)] z-50 p-8 shadow-[4px_0_8px_rgba(0,0,0,0.2)] backdrop-blur-sm bg-opacity-95 md:hidden"
+          className="fixed top-0 left-0 h-full w-64 sm:w-72 bg-[var(--navbar-bg)] text-[var(--navbar-text)] z-50 p-6 sm:p-8 shadow-[4px_0_8px_rgba(0,0,0,0.2)] backdrop-blur-sm bg-opacity-95 md:hidden"
         >
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className="mb-8"
+            className="mb-6 sm:mb-8"
           >
             <Link href="/" onClick={toggleSidebar}>
               <Image
                 src={isDarkMode ? '/logo1.png' : '/logo2.png'}
                 alt="Vickins Technologies Logo"
-                width={120}
-                height={48}
-                className="transition-transform duration-300 hover:scale-105"
+                width={100}
+                height={40}
+                className="sm:w-[120px] sm:h-[48px] transition-transform duration-300 hover:scale-105"
               />
             </Link>
           </motion.div>
           <motion.button
             onClick={toggleSidebar}
-            className="absolute top-4 right-4 p-2 hover:bg-[var(--card-bg)] hover:bg-opacity-30 rounded-full transition duration-300"
+            className="absolute top-4 right-4 p-1 sm:p-2 hover:bg-[var(--card-bg)] hover:bg-opacity-30 rounded-full transition duration-300"
             whileHover={{ scale: 1.1, rotate: 90 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: 'spring', stiffness: 400, damping: 15 }}
           >
-            <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="h-5 w-5 sm:h-6 sm:w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
           </motion.button>
-          <ul className="mt-8 space-y-6">
+          <ul className="mt-6 sm:mt-8 space-y-4 sm:space-y-6">
             {['Home', 'Process', 'About', 'Services', 'Pricing', 'Clients', 'Contact'].map((item) => (
               <motion.li
                 key={item}
@@ -57,7 +57,7 @@ export default function Sidebar({ isOpen, isDarkMode, toggleSidebar }: SidebarPr
               >
                 <Link
                   href={`#${item.toLowerCase()}`}
-                  className="relative text-lg font-semibold tracking-wide text-[var(--navbar-text)] hover:text-[var(--button-bg)] transition duration-300 group"
+                  className="relative text-base sm:text-lg font-semibold tracking-wide text-[var(--navbar-text)] hover:text-[var(--button-bg)] transition duration-300 group"
                   onClick={toggleSidebar}
                 >
                   {item}

@@ -224,7 +224,7 @@ const pricingPlans: PricingPlan[] = [
       "Hardware Troubleshooting",
       "24/7 Support",
     ],
-    idealFor: " voituresSMEs, Enterprises",
+    idealFor: "SMEs, Enterprises",
   },
   {
     name: "Cybersecurity",
@@ -310,11 +310,11 @@ export default function Pricing() {
       className="py-1 rounded-2xl shadow-xl relative overflow-hidden mx-4"
       style={{ background: 'linear-gradient(to bottom right, var(--background), var(--card-bg))' }}
     >
-      <div className="container mx-auto px-6 relative z-10">
-        <h2 className="text-4xl font-bold text-center mb-4" style={{ color: 'var(--foreground)' }}>
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        <h2 className="text-3xl sm:text-4xl font-bold text-center mb-3 sm:mb-4" style={{ color: 'var(--foreground)' }}>
           Our Pricing Plans
         </h2>
-        <p className="text-center mb-12 text-lg" style={{ color: 'var(--foreground)' }}>
+        <p className="text-center mb-8 sm:mb-12 text-base sm:text-lg" style={{ color: 'var(--foreground)' }}>
           Professional Solutions Tailored to Your Business Needs
         </p>
         <div className="relative overflow-hidden" ref={slideshowRef}>
@@ -326,40 +326,40 @@ export default function Pricing() {
             {extendedPricingPlans.map((plan, index) => (
               <motion.div
                 key={`${plan.name}-${index}`}
-                className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-3 mb-6"
+                className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 px-2 sm:px-3 mb-4 sm:mb-6"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
                 whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
               >
                 <div
-                  className={`relative p-6 rounded-xl shadow-lg h-[360px] flex flex-col justify-between transition-all duration-300 ${
+                  className={`relative p-4 sm:p-6 rounded-xl shadow-lg h-[320px] sm:h-[360px] flex flex-col justify-between transition-all duration-300 ${
                     plan.popular ? "border-2 border-[var(--button-bg)]" : "border border-[var(--card-bg)]"
                   }`}
                   style={{ backgroundColor: 'var(--card-bg)' }}
                 >
                   {plan.popular && (
                     <span
-                      className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-sm font-semibold px-4 py-1.5 rounded-full shadow-md"
+                      className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full shadow-md"
                       style={{ backgroundColor: 'var(--button-bg)' }}
                     >
                       Most Popular
                     </span>
                   )}
                   <div>
-                    <h3 className="text-xl font-semibold mb-2 text-center" style={{ color: 'var(--foreground)' }}>
+                    <h3 className="text-lg sm:text-xl font-semibold mb-2 text-center" style={{ color: 'var(--foreground)' }}>
                       {plan.name}
                     </h3>
-                    <p className="text-center text-sm mb-4" style={{ color: 'var(--foreground)' }}>
+                    <p className="text-center text-xs sm:text-sm mb-3 sm:mb-4" style={{ color: 'var(--foreground)' }}>
                       {plan.description}
                     </p>
-                    <p className="text-2xl font-bold text-center mb-4" style={{ color: 'var(--button-bg)' }}>
+                    <p className="text-xl sm:text-2xl font-bold text-center mb-3 sm:mb-4" style={{ color: 'var(--button-bg)' }}>
                       From {plan.price}
                     </p>
-                    <ul className="space-y-2 mb-4 max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--button-bg)] scrollbar-track-[var(--card-bg)]">
+                    <ul className="space-y-1 sm:space-y-2 mb-3 sm:mb-4 max-h-24 sm:max-h-32 overflow-y-auto scrollbar-thin scrollbar-thumb-[var(--button-bg)] scrollbar-track-[var(--card-bg)]">
                       {plan.features.map((feature) => (
-                        <li key={feature} className="flex items-center text-sm" style={{ color: 'var(--foreground)' }}>
-                          <CheckCircleIcon className="h-5 w-5 mr-2 flex-shrink-0" style={{ color: 'var(--button-bg)' }} />
+                        <li key={feature} className="flex items-center text-xs sm:text-sm" style={{ color: 'var(--foreground)' }}>
+                          <CheckCircleIcon className="h-4 w-4 sm:h-5 sm:w-5 mr-2 flex-shrink-0" style={{ color: 'var(--button-bg)' }} />
                           {feature}
                         </li>
                       ))}
@@ -367,7 +367,7 @@ export default function Pricing() {
                   </div>
                   <div>
                     {plan.idealFor && (
-                      <p className="text-center text-sm mb-4" style={{ color: 'var(--foreground)' }}>
+                      <p className="text-center text-xs sm:text-sm mb-3 sm:mb-4" style={{ color: 'var(--foreground)' }}>
                         <span className="font-semibold">Ideal for:</span> {plan.idealFor}
                       </p>
                     )}
@@ -378,23 +378,23 @@ export default function Pricing() {
           </motion.div>
           <motion.button
             onClick={goToPrevSlide}
-            className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full shadow-lg transition duration-300"
+            className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 text-white p-2 sm:p-3 rounded-full shadow-lg transition duration-300"
             style={{ backgroundColor: 'var(--button-bg)' }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <ChevronLeftIcon className="h-6 w-6" />
+            <ChevronLeftIcon className="h-5 w-5 sm:h-6 sm:w-6" />
           </motion.button>
           <motion.button
             onClick={goToNextSlide}
-            className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white p-3 rounded-full shadow-lg transition duration-300"
+            className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 text-white p-2 sm:p-3 rounded-full shadow-lg transition duration-300"
             style={{ backgroundColor: 'var(--button-bg)' }}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}
             transition={{ type: "spring", stiffness: 400, damping: 10 }}
           >
-            <ChevronRightIcon className="h-6 w-6" />
+            <ChevronRightIcon className="h-5 w-5 sm:h-6 sm:w-6" />
           </motion.button>
         </div>
       </div>
